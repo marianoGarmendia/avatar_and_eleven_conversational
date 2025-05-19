@@ -6,7 +6,7 @@ export default function Home() {
       <div className="absolute -z-10 w-[500px] h-[500px] rounded-full bg-gradient-to-r from-purple-500/30 to-blue-500/30 blur-[100px] animate-pulse" />
 
       <small className="text-sm text-gray-500 m-4">Powered by WinWinSaas</small>
-      <Avatar />
+      {/* <Avatar /> */}
       <h1 className="text-xl font-bold mb-6">Agente de Voz en tiempo real</h1>
       <VoiceComponent />
       <small className="text-xs text-gray-500 my-6">
