@@ -12,8 +12,9 @@ import { Mic, MicOff, Volume2, VolumeX } from "lucide-react";
 
 const VoiceChat = () => {
   const [hasPermission, setHasPermission] = useState(false);
-  const [isMuted, setIsMuted] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);
   const [errorMessage, setErrorMessage] = useState("");
+  
 
   const conversation = useConversation({
     onConnect: () => {
@@ -24,14 +25,21 @@ const VoiceChat = () => {
     },
     onMessage: (message) => {
       console.log("Received message:", message);
+      console.log("Message content: ", message.message ,"de: ",message.source);
     },
     onError: (error: string | Error) => {
       setErrorMessage(typeof error === "string" ? error : error.message);
       console.error("Error:", error);
     },
+    onUnhandledClientToolCall:(toolCall) => {
+      console.log("Unhandled client tool call:", toolCall);
+    },
+    onDebug: (debugInfo) => {
+      console.log("Debug info:", debugInfo);
+    }    
   });
 
-  const { status, isSpeaking } = conversation;
+  const { status, isSpeaking} = conversation;
 
   useEffect(() => {
     // Request microphone permission on component mount
