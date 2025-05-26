@@ -238,6 +238,13 @@ const VoiceChat = () => {
       <CardContent>
         <div className="space-y-4">
           <div className="flex justify-center">
+            <Button
+                variant="outline"
+                onClick={() => avatarRef.current?.interrupt()}
+                
+                className="w-full mt-2">
+                  Interrurpt
+                </Button>
             {status === "connected" ? (
               <Button
                 variant="destructive"
@@ -248,6 +255,7 @@ const VoiceChat = () => {
                 End Conversation
               </Button>
             ) : (
+            
               <Button
                 onClick={handleStartConversation}
                 disabled={!hasPermission}
@@ -256,6 +264,8 @@ const VoiceChat = () => {
                 <Mic className="mr-2 h-4 w-4" />
                 Start Conversation
               </Button>
+              
+              
             )}
           </div>
 
@@ -267,9 +277,12 @@ const VoiceChat = () => {
             )}
             {errorMessage && <p className="text-red-500">{errorMessage}</p>}
             {!hasPermission && (
+            
               <p className="text-yellow-600">
                 Please allow microphone access to use voice chat
               </p>
+              
+             
             )}
           </div>
         </div>
